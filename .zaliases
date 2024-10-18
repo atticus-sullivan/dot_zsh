@@ -1,0 +1,97 @@
+# vim: ft=zsh
+
+alias ls='ls --color=auto'
+alias grep='grep --colour=auto'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
+
+alias cp="cp -i"                          # confirm before overwriting something
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+
+# alias less="command less -R" # use colors
+
+alias diskUsage="printf '%s\n' 'dust: improved du with tree view' 'ncdu: ncursed interactive du' 'duf: nice df'"
+alias du="dust -r"
+
+alias cds="cd /media/daten/scripts/"
+
+alias wcl="texcount -sum -nosub -inc"
+
+#own aliases
+alias ls='lsd --date +"%Y-%m-%d %H:%M:%S"'
+alias l='ls -lF -I "*.bak" -I ".*.un~" -I "*.o" -I ".*.o" -I "work-obj93.cf"'
+
+alias ll='ls -alF'
+
+alias cat="bat --theme Nord" # evtl use Nord
+
+alias grep="rg --no-ignore --binary --glob '!*.ocrtext !.git/**' --hidden" # exclude ocr text files
+
+alias ps="procs"
+
+alias weather="curl http://v2.wttr.in/82547"
+
+alias ipAddr='/media/daten/scripts/bash/projekte/fritzboxIpAddr.sh'
+
+alias diskspace='du -S -d 1| sort -n -r | less' #disply sorted size of direcotries in PWD
+
+alias sudo="sudo " #this makes sudo <alias> work, since because of the space an the end of the alias, bash expands the following alias too
+
+alias diff='colordiff'
+
+alias xprop="xprop | awk '/^WM_CLASS/{sub(/.* =/, \"instance:\"); sub(/,/, \"\nclass:\"); print}/^WM_NAME/{sub(/.* =/, \"title:\"); print}'"
+
+alias tumMount='sshfs tum:/u/halle/heindl/ /mnt/tumLx/ ; cd /mnt/tumLx'
+alias rpiMount='sshfs rpi:/media/ /mnt/tumLx/ ; cd /mnt/tumLx'
+alias sshfsUmount='[[ "$PWD" == /mnt/tumLx* ]] && cd ; umount /mnt/tumLx/'
+
+alias ffmpeg_hb='ffmpeg -hide_banner'
+
+alias zfsUrlaub="zfs list -t snapshot -ro name,used,avail,refer,creation saveSpace/save/urlaubsbilder"
+
+alias getRes='for ele in ./* ; do if [[ -d "$ele" ]] ; then continue ; fi ;  printf "%-15s%s\n" "$(mediainfo --Inform="Video;%Width%x%Height%" "$ele")" "$ele" ; done'
+
+alias cpuFrequ='grep "^[c]pu MHz" /proc/cpuinfo'
+
+alias pdfmerge='pdfunite'
+
+alias decompiler="/opt/hopper-v4/bin/Hopper"
+
+alias dict="/usr/bin/sdcv"
+
+alias recent='find -maxdepth 1 -type f -mtime -1 -printf "%T@-%Tk:%TM - %f\n" | sort -rn | cut -d- -f2-'
+alias brokenSym='find . -type l -printf "%h/%f %l\n" | while read file link; do if [ ! -e "$link" ]; then ls -ld $file; fi;done'
+
+alias remOrphans='pacman -Qtdq | pacman -Rns -'
+
+alias vim='nvim'
+alias color='gcolor2 &>/dev/null'
+
+alias map="telnet mapscii.me"
+
+#respect xdg settings
+alias cal="calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse"
+alias gdb_init="gdb -nh -x "$XDG_CONFIG_HOME"/gdb/gdbinit"
+
+alias discover="title discover ; discover-overlay"
+
+alias hd="hexdump -C"
+
+# get top 10 shell commands:
+alias top10='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
+
+alias luamake=/home/lukas/programme/lua-language-server/3rd/luamake/luamake
+
+alias gitSPS='git stash && git pull ; git stash pop'
+
+alias mpv_yt='mpv --cache=yes --demuxer-max-bytes=1000000KiB --keep-open=always --ytdl-raw-options="playlist-reverse=" "https://www.youtube.com/playlist?list=PLasgoNHMVf7sMro0uyMxdFyHinr7fy-VC"'
+
+alias todo="cd ~/md_notes/ ; nvim todo.md"
+
+alias notify="notify-send 'finished'"
+alias ding='canberra-gtk-play -i complete -l 1 -d "ding"'
+
+alias texTemplCheat='git clone git@github.com:atticus-sullivan/cheatsheet_tmpl.git'
+
+alias makeCompileCommands='make clean; bear -- make'
