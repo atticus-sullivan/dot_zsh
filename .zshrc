@@ -249,14 +249,14 @@ if [ -f ~/.zfuncs ]; then
 	source ~/.zfuncs
 fi
 
-source "${XDG_CONFIG_HOME}/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh"
+source "${XDG_CONFIG_HOME}/zsh_dot/catppuccin_macchiato-zsh-syntax-highlighting.zsh"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 zlong_ignore_cmds="vim ssh nvim"
-source "${XDG_CONFIG_HOME}/zsh/zlong_alert.zsh"
+source "${XDG_CONFIG_HOME}/zsh_dot/zlong_alert.zsh"
 
 # plugin manager
 # https://github.com/rossmacarthur/sheldon

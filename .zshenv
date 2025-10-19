@@ -43,6 +43,8 @@ path+=("${CARGO_HOME}/bin")
 path+=("${HOME}/.local/bin")
 path+=("${HOME}/.texmf/scripts"/*/)
 
+export GOPRIVATE=git.atticus-sullivan.de
+
 # less in color
 export LESS=-R # allow ansi colors
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
@@ -54,3 +56,10 @@ export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
 eval $(luarocks path)
+
+# for conda
+export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+# for the idp
+# TODO remove
+# export GRB_LICENSE_FILE=/media/daten/education/studium/semester-11_m3/IDP/gurobi.lic
+export GRB_LICENSE_FILE=/home/lukas/studium/IDP/gurobi-12/gurobi.lic
