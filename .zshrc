@@ -189,23 +189,16 @@ setopt histignorespace
 ################
 ## DIR COLORS ##
 ################
-[[ -f ~/.config/dir_colors   ]] && match_lhs="${match_lhs}$(<~/.config/dir_colors)"
-[[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
-[[ -z ${match_lhs}    ]] \
-	&& type -P dircolors >/dev/null \
-	&& match_lhs=$(dircolors --print-database) #executed if neither ~/.dir_colors nor /etc/DIR_COLORS exists. Prints color for each file type and which terminal emulators are supported
-	[[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] && use_color=true #check whether terminal emulator is supported
-
-	if type dircolors >/dev/null
+if type dircolors >/dev/null
+then
+	if [[ -f ~/.config/dir_colors ]]
 	then
-		if [[ -f ~/.config/dir_colors ]]
-		then
-			eval $(dircolors -b ~/.config/dir_colors)
-		elif [[ -f /etc/DIR_COLORS ]]
-		then
-			eval $(dircolors -b /etc/DIR_COLORS)
-		fi
+		eval $(dircolors -b ~/.config/dir_colors)
+	elif [[ -f /etc/DIR_COLORS ]]
+	then
+		eval $(dircolors -b /etc/DIR_COLORS)
 	fi
+fi
 
 # Change the window title of X terminals
 case ${TERM} in
