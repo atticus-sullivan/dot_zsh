@@ -95,3 +95,9 @@ alias ding='canberra-gtk-play -i complete -l 1 -d "ding"'
 alias texTemplCheat='git clone git@github.com:atticus-sullivan/cheatsheet_tmpl.git'
 
 alias makeCompileCommands='make clean; bear -- make'
+
+fork(){
+	$* &>/dev/null & disown
+}
+
+alias git-resign="git rebase --exec 'git commit --amend --no-edit -n -S' -i"
